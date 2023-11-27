@@ -1,0 +1,9 @@
+ls /NAS6/Limuyang/data_vcf/C069_INS/C069.pbsv.vcf.filter.INS.homq.vcf /NAS6/Limuyang/data_vcf/C069_INS/C069.sniff.vcf.filter.INS.hom.vcf /NAS6/Limuyang/data_vcf/C069_INS/C069_cutesv_INS.vcf > /NAS6/Limuyang/data_vcf/C069_INS/sample_files
+/NAS7/home/Limuyang/SURVIVOR/Debug/SURVIVOR merge /NAS6/Limuyang/data_vcf/C069_INS/sample_files 1000 1 1 1 0 50 /NAS6/Limuyang/data_vcf/C069_INS/C069_INS_merged.vcf
+
+
+perl cal_overlap_LMY.pl C033_INS/C033_INS_merged.vcf C033_INS_overlap_info
+
+pbsv
+sniff
+cutesv

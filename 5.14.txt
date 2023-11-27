@@ -1,0 +1,12 @@
+ls /NAS6/Limuyang/data_vcf/B073_INS/B073.pbsv.vcf.filter.INS.homq.vcf /NAS6/Limuyang/data_vcf/B073_INS/B073_cutesv_INS.vcf /NAS6/Limuyang/data_vcf/B073_INS/assembly_INS.vcf > /NAS6/Limuyang/data_vcf/B073_INS/files1
+/NAS7/home/Limuyang/SURVIVOR/Debug/SURVIVOR merge /NAS6/Limuyang/data_vcf/B073_INS/files1 1000 1 1 1 0 50 /NAS6/Limuyang/data_vcf/B073_INS/P_C_A_INS.vcf
+
+ls /NAS6/Limuyang/data_vcf/B073_INS/B073.pbsv.vcf.filter.INS.homq.vcf /NAS6/Limuyang/data_vcf/B073_INS/B073.sniff.vcf.filter.INS.hom.vcf /NAS6/Limuyang/data_vcf/B073_INS/assembly_INS.vcf > /NAS6/Limuyang/data_vcf/B073_INS/files4
+/NAS7/home/Limuyang/SURVIVOR/Debug/SURVIVOR merge /NAS6/Limuyang/data_vcf/B073_INS/files4 1000 1 1 1 0 50 /NAS6/Limuyang/data_vcf/B073_INS/P_S_A_INS.vcf
+
+ls /NAS6/Limuyang/data_vcf/B073_INS/B073_cutesv_INS.vcf /NAS6/Limuyang/data_vcf/B073_INS/B073.sniff.vcf.filter.INS.hom.vcf /NAS6/Limuyang/data_vcf/B073_INS/assembly_INS.vcf > /NAS6/Limuyang/data_vcf/B073_INS/files5
+/NAS7/home/Limuyang/SURVIVOR/Debug/SURVIVOR merge /NAS6/Limuyang/data_vcf/B073_INS/files5 1000 1 1 1 0 50 /NAS6/Limuyang/data_vcf/B073_INS/C_S_A_INS.vcf
+
+perl cal_overlap_LMY.pl B073_INS/P_C_A_INS.vcf P_C_A_INS_overlap_info
+perl cal_overlap_LMY.pl B073_INS/P_S_A_INS.vcf P_S_A_INS_overlap_info
+perl cal_overlap_LMY.pl B073_INS/C_S_A_INS.vcf C_S_A_INS_overlap_info

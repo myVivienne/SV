@@ -1,0 +1,19 @@
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_DEL/assembly_DEL.vcf /NAS6/Limuyang/data_vcf/assembly_DEL.bed 5
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_INS/assembly_INS.vcf /NAS6/Limuyang/data_vcf/assembly_INS.bed 5
+
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_DEL/B073.sniff.vcf.filter.DEL.hom.vcf /NAS6/Limuyang/data_vcf/sniffles_DEL.bed 10
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_INS/B073.sniff.vcf.filter.INS.hom.vcf /NAS6/Limuyang/data_vcf/sniffles_INS.bed 10
+
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_DEL/B073.pbsv.vcf.filter.DEL.homq.vcf /NAS6/Limuyang/data_vcf/pbsv_DEL.bed -1
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_INS/B073.pbsv.vcf.filter.INS.homq.vcf /NAS6/Limuyang/data_vcf/pbsv_INS.bed -1
+
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_DEL/B073_cutesv_DEL.vcf /NAS6/Limuyang/data_vcf/cutesv_DEL.bed 2
+perl extract_sv.pl /NAS6/Limuyang/data_vcf/B073_INS/B073_cutesv_INS.vcf /NAS6/Limuyang/data_vcf/cutesv_INS.bed 2
+
+
+perl extract_sv.pl ./B073_DEL/B073.sniff.vcf.filtered.DEL.hom.vcf ./sniffles_DEL.bed 10
+perl extract_sv.pl ./B073_INS/B073.sniff.vcf.filtered.INS.hom.vcf ./sniffles_INS.bed 10
+
+B073.pbsv.vcf.filter.DEL.homq.vcf
+
+

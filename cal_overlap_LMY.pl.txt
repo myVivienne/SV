@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+die usage() if @ARGV == 0;
+
+my ($vcf,$output) = @ARGV;
+
+my $S1_specific = 0;
+my $S2_specific = 0;
+my $S3_specific = 0;
+my $S1_S2 = 0;
+my $S1_S3 = 0;
+my $S2_S3 = 0;
+my $S123 = 0;
+
+open NEW1,"$vcf" or die;
+while(<NEW1>){
+	chomp;
+	next if (/^#/);
+	my @array = split /\s+/;
+	if( !($array[9] =~ /0:--:NaN/) and $array[10] =~ /0:--:NaN/ and $array[11] =~ /0:--:NaN/){
+		$S1_specific++;
+	}
+	elsif($array[9] =~ /0:--:NaN/ and !($array[10] =~ /0:--:NaN/) and $array[11] =~ /0:--:NaN/){
+		$S2_specific++;
+	}
+	elsif($array[9] =~ /0:--:NaN/ and $array[10] =~ /0:--:NaN/  and !($array[11] =~ /0:--:NaN/)){
+		$S3_specific++;
+	}
+	elsif( !($array[9] =~ /0:--:NaN/) and !($array[10] =~ /0:--:NaN/) and $array[11] =~ /0:--:NaN/){
+		$S1_S2++;
+	}
+	elsif( $array[9] =~ /0:--:NaN/  and !($array[10] =~ /0:--:NaN/) and !($array[11] =~ /0:--:NaN/)){
+		$S2_S3++;
+	}
+	elsif( !($array[9] =~ /0:--:NaN/)  and $array[10] =~ /0:--:NaN/ and !($array[11] =~ /0:--:NaN/)){
+		$S1_S3++;
+	}
+	elsif(!($array[9] =~ /0:--:NaN/)  and !($array[10] =~ /0:--:NaN/) and !($array[11] =~ /0:--:NaN/)){
+		$S123++;
+	}
+	else{
+			print "$_\n";
+	}
+}
+close NEW1;
+open NEW1,">$output" or die;
+print NEW1 "1_specific\t$S1_specific\n";
+print NEW1 "2_specific\t$S2_specific\n";
+print NEW1 "3_specific\t$S3_specific\n";
+print NEW1 "1_2\t$S1_S2\n";
+print NEW1 "1_3\t$S1_S3\n";
+print NEW1 "2_3\t$S2_S3\n";
+print NEW1 "123\t$S123\n";
+close NEW1;
+
+		
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+#$ -cwd
+#$ -j y
+#$ -S /bin/bash
+#$ -pe make 16
+
+
+#samtools sort -@16 /NAS6/Limuyang/raw_data_bam/SV_bamfile/C069.pbsv.bam -o /NAS6/Limuyang/raw_data_bam/SV/C069.sort.bam
+#samtools sort -@16 /NAS6/Limuyang/raw_data_bam/SV_bamfile/C033.pbsv.bam -o /NAS6/Limuyang/raw_data_bam/SV/C033.sort.bam
+#samtools sort -@16 /NAS6/Limuyang/raw_data_bam/SV_bamfile/C057.pbsv.bam -o /NAS6/Limuyang/raw_data_bam/SV/C057.sort.bam
+#samtools sort -@16 /NAS6/Limuyang/raw_data_bam/SV_bamfile/B073.pbsv.bam -o /NAS6/Limuyang/raw_data_bam/SV/C073.sort.bam
+#mv /NAS6/Limuyang/raw_data_bam/SV/C073.sort.bam /NAS6/Limuyang/raw_data_bam/SV/B073.sort.bam
+
+
+#samtools index /NAS6/Limuyang/raw_data_bam/SV/C069.sort.bam &
+#samtools index /NAS6/Limuyang/raw_data_bam/SV/C033.sort.bam &
+#samtools index /NAS6/Limuyang/raw_data_bam/SV/C057.sort.bam &
+#samtools index /NAS6/Limuyang/raw_data_bam/SV/B073.sort.bam &
+#wait
+
+mkdir /NAS6/Limuyang/data_vcf/C069_workdir -p
+cuteSV --max_cluster_bias_INS 100 --diff_ratio_merging_INS  0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 --threads 16 --sample C069 --retain_work_dir --report_readid --min_support 2 --min_size 50 /NAS6/Limuyang/raw_data_bam/SV/C069.sort.bam /NAS6/Limuyang/Zm-Mo17-REFERENCE-CAU-1.0.fa /NAS6/Limuyang/data_vcf/C069.SV.vcf /NAS6/Limuyang/data_vcf/C069_workdir
+
+mkdir /NAS6/Limuyang/data_vcf/C033_workdir -p
+cuteSV --max_cluster_bias_INS 100 --diff_ratio_merging_INS  0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 --threads 16 --sample C033 --retain_work_dir --report_readid --min_support 2 --min_size 50 /NAS6/Limuyang/raw_data_bam/SV/C033.sort.bam /NAS6/Limuyang/Zm-Mo17-REFERENCE-CAU-1.0.fa /NAS6/Limuyang/data_vcf/C033.SV.vcf /NAS6/Limuyang/data_vcf/C033_workdir
+
+mkdir /NAS6/Limuyang/data_vcf/C057_workdir -p
+cuteSV --max_cluster_bias_INS 100 --diff_ratio_merging_INS  0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 --threads 16 --sample C057 --retain_work_dir --report_readid --min_support 2 --min_size 50 /NAS6/Limuyang/raw_data_bam/SV/C057.sort.bam /NAS6/Limuyang/Zm-Mo17-REFERENCE-CAU-1.0.fa /NAS6/Limuyang/data_vcf/C057.SV.vcf /NAS6/Limuyang/data_vcf/C057_workdir 
+
+mkdir /NAS6/Limuyang/data_vcf/B073_workdir -p
+cuteSV --max_cluster_bias_INS 100 --diff_ratio_merging_INS  0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 --threads 16 --sample B073 --retain_work_dir --report_readid --min_support 2 --min_size 50 /NAS6/Limuyang/raw_data_bam/SV/B073.sort.bam /NAS6/Limuyang/Zm-Mo17-REFERENCE-CAU-1.0.fa /NAS6/Limuyang/data_vcf/B073.SV.vcf /NAS6/Limuyang/data_vcf/B073_workdir 

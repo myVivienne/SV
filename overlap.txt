@@ -1,0 +1,6 @@
+perl cal_overlap_LMY.pl B073_DEL/DEL_cutesv_assembly_merged.vcf DEL_cutesv_assembly_overlap_info
+perl cal_overlap_LMY.pl B073_DEL/DEL_pbsv_assembly_merged.vcf DEL_pbsv_assembly_overlap_info
+perl cal_overlap_LMY.pl B073_DEL/DEL_sniff_assembly_merged.vcf DEL_sniff_assembly_overlap_info
+perl cal_overlap_LMY.pl B073_INS/INS_cutesv_assembly_merged.vcf INS_cutesv_assembly_overlap_info
+perl cal_overlap_LMY.pl B073_INS/INS_pbsv_assembly_merged.vcf INS_pbsv_assembly_overlap_info
+perl cal_overlap_LMY.pl B073_INS/INS_sniff_assembly_merged.vcf INS_sniff_assembly_overlap_info

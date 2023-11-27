@@ -1,0 +1,38 @@
+#!/bin/sh
+
+
+perl extract_sv.pl ./section2/assembly_DEL.vcf ./section2/assembly_DEL.bed 5
+perl extract_sv.pl ./section2/assembly_INS.vcf ./section2/assembly_INS.bed 5
+perl extract_sv.pl ./section2/B073.sniff.filtered.DEL.hom.vcf ./section2/sniffles_DEL.bed 10
+perl extract_sv.pl ./section2/B073.sniff.filtered.INS.hom.vcf ./section2/sniffles_INS.bed 10
+
+perl extract_sv.pl ./section2/B073.pbsv.filtered.DEL.hom.vcf ./section2/pbsv_DEL.bed -1
+perl extract_sv.pl ./section2/B073.pbsv.filtered.INS.hom.vcf ./section2/pbsv_INS.bed -1
+
+
+sed -i '/scaffold/d' ./section2/*.bed
+
+#计算不同方法间的overlap
+for method in sniffles pbsv 
+do
+for marker in INS #DEL
+do
+echo /$assembly\_$marker\_total
+wc -l ./section2/$assembly\_$marker.bed
+
+echo $method\_$marker\_total
+wc -l ./section2/$method\_$marker.bed
+
+echo $assembly\_specific_$marker
+bedtools intersect -a ./section2/$assembly\_$marker.bed -b ./section2/$method\_$marker.bed -v | awk '{print $1"\t"$2"\tMummer"NR}' - | wc -l 
+
+echo $method\_specific\_$marker
+bedtools intersect -a ./section2/$method\_$marker.bed -b ./section2/$assembly\_$marker.bed -v | awk '{print $1"\t"$2"\tanchorwave"NR}' - | wc -l
+
+echo $assembly\_common_$marker
+bedtools intersect -a ./section2/$assembly\_$marker.bed -b ./section2/$method\_$marker.bed -wa | awk '{print $1"\t"$2}' - | sort | uniq | wc -l
+
+echo $method\_common_$marker
+bedtools intersect -a ./section2/$method\_$marker.bed -b ./section2/$assembly\_$marker.bed -wa | awk '{print $1"\t"$2}' - | sort | uniq | wc -l
+done
+done

@@ -1,0 +1,3 @@
+ls /NAS6/Limuyang/data_vcf/B073_DEL/B073.pbsv.vcf.filter.DEL.homq.vcf /NAS6/Limuyang/data_vcf/B073_DEL/B073.sniff.vcf.filter.DEL.hom.vcf /NAS6/Limuyang/data_vcf/B073_DEL/B073_cutesv_DEL.vcf > /NAS6/Limuyang/data_vcf/B073_DEL/sample_files
+
+/NAS7/home/Limuyang/SURVIVOR/Debug/SURVIVOR merge /NAS6/Limuyang/data_vcf/B073_DEL/sample_files 1000 1 1 1 0 50 /NAS6/Limuyang/data_vcf/B073_DEL/B073_DEL_merged.vcf
